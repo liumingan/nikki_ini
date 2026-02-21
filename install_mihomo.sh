@@ -8,12 +8,12 @@ set -e  # 遇到错误立即退出
 # 下载函数
 DOWNLOAD_Nikki_HS (){
 # 只需运行一次
-  wget -O - https://github.com/nikkinikki-org/OpenWrt-nikki/raw/refs/heads/main/feed.sh | ash
+  wget -O - https://github.com/nikkinikki-org/OpenWrt-nikki/raw/main/feed.sh | ash
 }
 
 # 在线安装函数
 ONLINE_INSTALL_HS (){
-  wget -O - https://github.com/nikkinikki-org/OpenWrt-nikki/raw/refs/heads/main/install.sh | ash
+  wget -O - https://raw.githubusercontent.com/nikkinikki-org/OpenWrt-nikki/main/install.sh | ash
 }
 
 ONLINE_INSTALL_HS || DOWNLOAD_Nikki_HS
