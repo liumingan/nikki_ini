@@ -131,17 +131,14 @@ ntp:
   interval: 600
 
 proxies:
-  - {"name": "myhome", "type": "socks5", "server": "lmz.dedyn.io", "port": "7891", "username": "Clash", "password": "aK12&345g678"}
+  - {"name": "myhome", "type": "socks5", "server": "syk3.homeip.dpdns.org", "port": "7891", "username": "Clash", "password": "aK12&345g678"}
   - {"name": "liaohui", "type": "socks5", "server": "liaohuir5s.lmy.dedyn.io", "port": "7891", "username": "Clash", "password": "aK12&345g678"}
 
 proxy-providers:
   LTCF8443:
     type: http
-    path: ./providers/proxy/cf-LTCF-8443.yaml
-    url: "https://raw.githubusercontent.com/liumingan/myhome/main/Proxy/cf-LTCF-8443.yaml"
-    headers:
-      # 注意：token 后面有个空格
-      Authorization: "token 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"
+    path: ./providers/cf-LTCF-8443.yaml
+    url: "https://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@raw.githubusercontent.com/liumingan/myhome/main/Proxy/cf-LTCF-8443.yaml"
     interval: 86400
     health-check:
       enable: true
@@ -152,11 +149,8 @@ proxy-providers:
       expected-status: "*"
   LTFD443:
     type: http
-    path: ./providers/proxy/cf-LTFD-443.yaml
-    url: "https://raw.githubusercontent.com/liumingan/myhome/main/Proxy/cf-LTFD-443.yaml"
-    headers:
-      # 注意：token 后面有个空格
-      Authorization: "token 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"
+    path: ./providers/cf-LTFD-443.yaml
+    url: "https://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@raw.githubusercontent.com/liumingan/myhome/main/Proxy/cf-LTFD-443.yaml"
     interval: 86400
     health-check:
       enable: true
@@ -167,11 +161,8 @@ proxy-providers:
       expected-status: "*"
   cf2053:
     type: http
-    path: ./providers/proxy/cf2053.yaml
-    url: "https://raw.githubusercontent.com/liumingan/myhome/main/Proxy/cf2053.yaml"
-    headers:
-      # 注意：token 后面有个空格
-      Authorization: "token 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"
+    path: ./providers/cf2053.yaml
+    url: "https://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@raw.githubusercontent.com/liumingan/myhome/main/Proxy/cf2053.yaml"
     interval: 86400      
     health-check:
       enable: true
@@ -182,10 +173,8 @@ proxy-providers:
       expected-status: "*"
   cf2096:
     type: http
-    url: "https://raw.githubusercontent.com/liumingan/myhome/main/Proxy/cf2096.yaml"
-    headers:
-      # 注意：token 后面有个空格
-      Authorization: "token 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"
+    path: ./providers/cf2096.yaml
+    url: "https://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@raw.githubusercontent.com/liumingan/myhome/main/Proxy/cf2096.yaml"
     interval: 86400
     health-check:
       enable: true
@@ -196,7 +185,7 @@ proxy-providers:
       expected-status: "*"
   chromego:
     type: http
-    path: ./providers/proxy/chromego.yaml
+    path: ./providers/chromego.yaml
     url: "https://romego.liumingan.cloudns.org/clash"
     interval: 86400
     health-check:
