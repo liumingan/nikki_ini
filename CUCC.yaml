@@ -1,0 +1,344 @@
+TTnoymixed-port: 7890
+socks-port: 7891 # SOCKS5 代理端口
+redir-port: 7893 # 透明代理端口，用于 Linux 和 MacOS
+tproxy-port: 7892
+allow-lan: true
+bind-address: "*" # 绑定 IP 地址，仅作用于 allow-lan 为 true，'*'表示所有地址
+authentication: # http,socks 入口的验证用户名，密码
+  - "Clash:aK12&345g678"
+skip-auth-prefixes: # 设置跳过验证的 IP 段
+  - 127.0.0.1/8
+  - ::1/128
+lan-allowed-ips: # 允许连接的 IP 地址段，仅作用于 allow-lan 为 true, 默认值为 0.0.0.0/0 和::/0
+  - 0.0.0.0/0
+  - ::/0
+# lan-disallowed-ips: # 禁止连接的 IP 地址段，黑名单优先级高于白名单，默认值为空
+
+#  find-process-mode has 3 values:always, strict, off
+#  - always, 开启，强制匹配所有进程
+#  - strict, 默认，由 mihomo 判断是否开启
+#  - off, 不匹配进程，推荐在路由器上使用此模式
+find-process-mode: off # strict # off
+log-level: warning # 日志等级 silent/error/warning/info/debug
+ipv6: true # 开启 IPv6 总开关，关闭阻断所有 IPv6 链接和屏蔽 DNS 请求 AAAA 记录
+external-controller: 0.0.0.0:9090
+# 配置 WEB UI 目录，使用 http://{{external-controller}}/ui 访问
+external-ui: ui
+external-ui-url: "https://gh-proxy.com/https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip"
+# 在RESTful API端口上开启DOH服务器！！！该URL不会验证secret， 如果开启请自行保证安全问题 ！！！
+# external-doh-server: /dns-query
+# 全局 TLS 指纹，优先低于 proxy 内的 client-fingerprint
+global-client-fingerprint: random # "chrome","firefox","safari","ios","random","none"
+#  TCP keep alive interval
+keep-alive-interval: 600
+unified-delay: true # 统一延迟
+tcp-concurrent: false # false TCP并发
+# interface-name: en0 #出站接口
+# routing-mark: 6666
+hosts:
+  cn.bing.com: 204.79.197.200
+#自定义 geodata url
+geodata-mode: true
+geox-url:
+  geoip: "https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.dat"
+  geosite: "https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
+  mmdb: "https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country-lite.mmdb"
+  asn: "https://gh-proxy.com/https://github.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb"
+geo-auto-update: true # false # 是否自动更新 geodata
+geo-update-interval: 144 # 更新间隔，单位：小时
+profile: # 存储 select 选择记录
+  store-selected: true
+  # 持久化 fake-ip
+  store-fake-ip: false # true
+tun:
+  enable: true #false
+  stack: mixed # gvisor/mixed/system
+#  dns-hijack:
+#    - any:53
+#    - tcp://any:53 # 需要劫持的 DNS
+  auto-detect-interface: true # 自动识别出口网卡
+  auto-route: true # 配置路由表
+  device: nikki
+  mtu: 9000 # 最大传输单元
+  gso: true # 启用通用分段卸载，仅支持 Linux
+  gso-max-size: 65536 # 通用分段卸载包的最大大小
+  auto-redirect: true # false # 自动配置 iptables 以重定向 TCP 连接。仅支持 Linux。带有 auto-redirect 的 auto-route 现在可以在路由器上按预期工作，无需干预。
+  # strict-route: true # 将所有连接路由到 tun 来防止泄漏，但你的设备将无法其他设备被访问
+  endpoint-independent-nat: false
+sniffer:
+  enable: false #false or true
+  force-dns-mapping: false # true
+  parse-pure-ip: true # false # true
+  override-destination: true
+  sniff: {HTTP: {ports: [80, 8080-8880]}, TLS: {ports: [443, 8443]}, QUIC: {ports: [443, 8443]}}
+  force-domain:
+    - "+.v2ex.com"
+  skip-domain:
+    - "+.homeip.us.eu.org"
+    - "Mijia Cloud"
+    - '+.apple.com'
+dns:
+  cache-algorithm: arc
+  enable: true
+  enhanced-mode: redir-host # redir-host or fake-ip
+  prefer-h3: true # 是否开启 DoH 支持 HTTP/3，将并发尝试
+  listen: 0.0.0.0:1053 # 开启 DNS 服务器监听
+  use-hosts: true
+  use-system-hosts: true
+  ipv6: true
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - '+.*'
+  default-nameserver:
+    - 114.114.114.114
+    - 119.29.29.29
+  # 配置后面的nameserver、fallback和nameserver-policy向dns服务器的连接过程是否遵守遵守rules规则
+  # 如果为false（默认值）则这三部分的dns服务器在未特别指定的情况下会直连
+  # 如果为true，将会按照rules的规则匹配链接方式（走代理或直连），如果有特别指定则任然以指定值为准
+  # 仅当proxy-server-nameserver非空时可以开启此选项, 强烈不建议和prefer-h3一起使用
+  # 此外，这三者配置中的dns服务器如果出现域名会采用default-nameserver配置项解析，也请确保正确配置default-nameserver
+  respect-rules: false # false  true
+  nameserver:
+    - '1.1.1.1'
+    - 'one.one.one.one'
+    - '114.114.114.114'
+  nameserver-policy:
+    'geosite:baidu': '180.76.76.76'
+    'geosite:alibaba': '223.5.5.5'
+    'geosite:tencent': '119.29.29.29'
+    "geosite:category-ads-all": rcode://success
+    'geosite:cn,private,category-games@cn':
+      - '218.106.127.114'
+      - '218.104.111.114'
+    #  - 'https://223.6.6.6/dns-query'
+    'geosite:geolocation-!cn,google,gfw,youtube,pixiv,bing,twitter,openai':
+      - 'tls://1.0.0.1#DNS'
+      - '1dot1dot1dot1.cloudflare-dns.com#DNS'
+      - 'https://dns.google/dns-query#DNS'
+      - 'tls://208.67.222.222#DNS'
+      - 'https://cloudflare-dns.com/dns-query#DNS'
+      - 'https://mozilla.cloudflare-dns.com/dns-query#DNS&h3=true'
+  proxy-server-nameserver: # 专用于节点域名解析的 DNS 服务器
+    - '1.1.1.1'
+    - '114.114.115.115'
+    - 'quic://dns.adguard.com:784'
+    - 'https://doh.pub/dns-query'
+ntp:
+  enable: true
+  write-to-system: false # true
+  server: cn.ntp.org.cn
+  port: 123
+  interval: 600
+
+proxies:
+  - {"name": "myhome", "type": "socks5", "server": "lmz.dedyn.io", "port": "7891", "username": "Clash", "password": "aK12&345g678"}
+  - {"name": "liaohui", "type": "socks5", "server": "liaohuir5s.lmy.dedyn.io", "port": "7891", "username": "Clash", "password": "aK12&345g678"}
+
+proxy-providers:
+  LTCF8443:
+    type: http
+    path: ./providers/proxy/cf-LTCF-8443.yaml
+    url: "https://raw.githubusercontent.com/liumingan/myhome/main/Proxy/cf-LTCF-8443.yaml"
+    headers:
+      # 注意：token 后面有个空格
+      Authorization: "token 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"
+    interval: 86400
+    health-check:
+      enable: true
+      url: https://www.google-analytics.com/generate_204
+      interval: 86400
+      timeout: 5000
+      lazy: true
+      expected-status: "*"
+  LTFD443:
+    type: http
+    path: ./providers/proxy/cf-LTFD-443.yaml
+    url: "https://raw.githubusercontent.com/liumingan/myhome/main/Proxy/cf-LTFD-443.yaml"
+    headers:
+      # 注意：token 后面有个空格
+      Authorization: "token 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"
+    interval: 86400
+    health-check:
+      enable: true
+      url: https://www.google-analytics.com/generate_204
+      interval: 86400
+      timeout: 5000
+      lazy: true
+      expected-status: "*"
+  cf2053:
+    type: http
+    path: ./providers/proxy/cf2053.yaml
+    url: "https://raw.githubusercontent.com/liumingan/myhome/main/Proxy/cf2053.yaml"
+    headers:
+      # 注意：token 后面有个空格
+      Authorization: "token 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"
+    interval: 86400      
+    health-check:
+      enable: true
+      url: https://www.google-analytics.com/generate_204
+      interval: 86400
+      timeout: 5000
+      lazy: true
+      expected-status: "*"
+  cf2096:
+    type: http
+    url: "https://raw.githubusercontent.com/liumingan/myhome/main/Proxy/cf2096.yaml"
+    headers:
+      # 注意：token 后面有个空格
+      Authorization: "token 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"
+    interval: 86400
+    health-check:
+      enable: true
+      url: https://www.google-analytics.com/generate_204
+      interval: 86400
+      timeout: 5000
+      lazy: true
+      expected-status: "*"
+  chromego:
+    type: http
+    path: ./providers/proxy/chromego.yaml
+    url: "https://romego.liumingan.cloudns.org/clash"
+    interval: 86400
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 600
+      timeout: 5000
+      lazy: true
+      expected-status: "*"
+proxy-groups:
+  - name: PROXY
+    type: select
+    proxies:
+      - ⚖️ LTCF8443轮询       
+      - ⚖️ cf20轮询    
+      - ⚖️ LTFD443轮询
+      - ⚖️ chromego轮询            
+      - 手动选择
+    health-check:
+      enable: true
+      interval: 300
+      lazy: true
+      url: http://www.apple.com/library/test/success.html
+  - name: 手动选择
+    type: select
+    proxies:
+      - DIRECT
+      - ⚖️ chromego轮询            
+      - CF      
+      - myhome
+      - liaohui
+      - ⚖️ LTFD443轮询
+      - ⚖️ cf20轮询
+      - ⚖️ LTCF8443轮询
+  - name: CF
+    type: url-test
+    use:
+      - LTCF8443
+      - LTFD443
+      - cf2053
+      - cf2096
+    health-check:
+      enable: true
+      interval: 300
+      lazy: true
+      url: http://www.apple.com/library/test/success.html      
+  - name: Telegram
+    type: select
+    proxies:
+      - PROXY
+      - CF
+      - 手动选择
+  - name: Other
+    type: select
+    proxies:
+      - PROXY
+      - CF
+      - 手动选择
+      - DIRECT
+  - name: "DNS"
+    type: url-test
+    proxies:
+      - CF
+      - PROXY      
+    use:
+      - chromego            
+    health-check:
+      enable: true
+      interval: 300
+      # lazy: true
+      url: http://www.apple.com/library/test/success.html
+  - name: ⚖️ LTFD443轮询
+    type: load-balance
+    strategy: round-robin
+    use:
+      - LTFD443
+  - name: ⚖️ LTCF8443轮询
+    type: load-balance
+    strategy: round-robin
+    use:
+      - LTCF8443
+  - name: ⚖️ cf20轮询
+    type: load-balance
+    strategy: round-robin
+    use:
+      - cf2053
+      - cf2096
+  - name: ⚖️ chromego轮询
+    type: load-balance
+    strategy: round-robin
+    use:
+      - chromego
+  - name: OpenAI
+    type: select
+    proxies:
+      - ⚖️ LTCF8443轮询         
+      - ⚖️ chromego轮询
+      - ⚖️ cf20轮询       
+      - ⚖️ LTFD443轮询	  
+#  - name: ⚖️ Serv00轮询
+#    type: load-balance
+#    strategy: round-robin
+#    use:
+#      - serv00      
+#  - name: ⚖️ 负载均衡-散列
+#   type: load-balance
+#   strategy: consistent-hashing
+#    use:
+#      - BBN
+rules:
+  # 常见广告域名屏蔽
+  - GEOSITE,category-ads-all,REJECT
+  # 自定义规则
+  - DOMAIN-SUFFIX,dyndns.com,DIRECT
+  - DOMAIN-SUFFIX,dynv6.net,DIRECT
+  - DOMAIN-SUFFIX,dynv6.com,DIRECT
+  - DOMAIN-SUFFIX,cloudflare.com,DIRECT
+  - DOMAIN-SUFFIX,ip.flares.cloud,DIRECT
+  - DOMAIN-SUFFIX,cloudns.net,PROXY
+  # GEOSITE规则
+  - GEOSITE,private,DIRECT
+  - GEOSITE,gitlab,手动选择
+  - GEOSITE,bing,PROXY
+  - AND,((NETWORK,UDP),(DST-PORT,443),(GEOSITE,youtube)),REJECT
+  - GEOSITE,youtube,PROXY
+  - GEOSITE,google,PROXY
+  - GEOSITE,twitter,PROXY
+  - GEOSITE,pixiv,PROXY
+  - GEOSITE,category-games@cn,DIRECT
+  - GEOSITE,category-scholar-!cn,PROXY
+  - GEOSITE,biliintl,PROXY
+  - GEOSITE,openai,OpenAI
+  - GEOSITE,gfw,PROXY
+  - GEOSITE,onedrive,PROXY
+  - GEOSITE,microsoft@cn,DIRECT
+  - GEOSITE,apple-cn,DIRECT
+  - GEOSITE,steam@cn,DIRECT
+  - GEOSITE,geolocation-!cn,PROXY
+  - GEOSITE,cn,DIRECT
+  #GEOIP规则
+  - GEOIP,private,DIRECT,no-resolve
+  - GEOIP,telegram,Telegram,no-resolve
+  - GEOIP,CN,DIRECT,no-resolve
+  - DST-PORT,80/8080/443/8443,PROXY,no-resolve
+  - MATCH,Other,no-resolve
