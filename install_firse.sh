@@ -46,7 +46,7 @@ download_speedtest() {
 
     while [ $count -lt $retries ]; do
         # 下载并解压测速软件
-        wget -qO "/tmp/$cfst_s" "https://gitlab.com/api/v4/projects/51320840/repository/files/cdnip%2F$cfst_s/raw?ref=main&private_token=$gitlab_private_token" \
+        wget -qO "/tmp/$cfst_s" "https://raw.githubusercontent.com/liumingan/nikki_ini/main/$cfst_s" \
             && tar -zxf "/tmp/$cfst_s" -C /etc/ \
             && rm -f "/tmp/$cfst_s"
 
@@ -76,7 +76,7 @@ download_speedtest_script() {
 
     while [ $count -lt $retries ]; do
         # 下载测速脚本
-        wget -qO "/etc/cfipopw/cdnip.sh" "https://gitlab.com/api/v4/projects/51320840/repository/files/cdnip%2Fcdnip.sh/raw?ref=main&private_token=$gitlab_private_token" \
+        wget -qO "/etc/cfipopw/cdnip.sh" "https://raw.githubusercontent.com/liumingan/nikki_ini/main/cdnip.sh" \
             && chmod +x /etc/cfipopw/cdnip.sh
 
         # 检查是否成功下载并赋权
