@@ -122,10 +122,10 @@ set nikki.proxy.ipv6_dns_hijack='0'
 add_list nikki.proxy.acl_mac='2C:B2:1A:55:C2:28'
 
 # 订阅配置
-set nikki.subscription[-1].name="${Operators}"
-set nikki.subscription[-1].url="https://raw.githubusercontent.com/liumingan/nikki_ini/refs/heads/main/${Operators}.yaml"
-set nikki.subscription[-1].user_agent='mihomo'
-set nikki.@subscription[-1].prefer='remote'
+set nikki.subscription.name="${Operators}"
+set nikki.subscription.url="https://raw.githubusercontent.com/liumingan/nikki_ini/refs/heads/main/${Operators}.yaml"
+set nikki.subscription.user_agent='mihomo'
+set nikki.@subscription.prefer='remote'
 
 # Mixin 配置
 set nikki.mixin.dns_respect_rules='0'
