@@ -138,7 +138,7 @@ proxy-providers:
   LTCF8443:
     type: http
     path: ./providers/proxy/cf-LTCF-8443.yaml
-    url: "https://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@raw.githubusercontent.com/liumingan/myhome/main/Proxy/cf-LTCF-8443.yaml"
+    url: "https://raw.githubusercontent.com/liumingan/nikki_ini/main/Proxy/cf-LTCF-8443.yaml"
     interval: 86400
     health-check:
       enable: true
@@ -150,7 +150,7 @@ proxy-providers:
   LTFD443:
     type: http
     path: ./providers/proxy/cf-LTFD-443.yaml
-    url: "https://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@raw.githubusercontent.com/liumingan/myhome/main/Proxy/cf-LTFD-443.yaml"
+    url: "https://raw.githubusercontent.com/liumingan/nikki_ini/main/Proxy/cf-LTFD-443.yaml"
     interval: 86400
     health-check:
       enable: true
@@ -162,7 +162,7 @@ proxy-providers:
   cf2053:
     type: http
     path: ./providers/proxy/cf2053.yaml
-    url: "https://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@raw.githubusercontent.com/liumingan/myhome/main/Proxy/cf2053.yaml"
+    url: "https://raw.githubusercontent.com/liumingan/nikki_ini/main/Proxy/cf2053.yaml"
     interval: 86400      
     health-check:
       enable: true
@@ -174,7 +174,7 @@ proxy-providers:
   cf2096:
     type: http
     path: ./providers/proxy/cf2096.yaml
-    url: "https://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@raw.githubusercontent.com/liumingan/myhome/main/Proxy/cf2096.yaml"
+    url: "https://raw.githubusercontent.com/liumingan/nikki_ini/main/Proxy/cf2096.yaml"
     interval: 86400
     health-check:
       enable: true
