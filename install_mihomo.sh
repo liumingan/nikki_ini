@@ -140,7 +140,6 @@ set nikki.mixin.dns_system_hosts='1'
 set nikki.mixin.geosite_url='https://ghfast.top/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat'
 
 # 认证
-del nikki.cfg06b425
 add nikki authentication
 set nikki.@authentication[-1].enabled='1'
 set nikki.@authentication[-1].username='Clash'
