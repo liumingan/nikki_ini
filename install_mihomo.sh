@@ -30,9 +30,9 @@ set nikki.proxy.udp_mode='tproxy'
 set nikki.proxy.ipv6_proxy='1'
 set nikki.proxy.bypass_china_mainland_ip='1'
 set nikki.proxy.bypass_china_mainland_ip6='1'
-set nikki.proxy.router_proxy='0'
-set nikki.proxy.ipv4_dns_hijack='0'
-set nikki.proxy.ipv6_dns_hijack='0'
+set nikki.proxy.router_proxy='1'
+set nikki.proxy.ipv4_dns_hijack='1'
+set nikki.proxy.ipv6_dns_hijack='1'
 
 # 订阅配置
 set nikki.subscription.name="${Operators}"
