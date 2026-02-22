@@ -108,14 +108,13 @@ uci batch <<-EOF
 set nikki.config.enabled='1'
 set nikki.config.mixin='0'
 set nikki.config.fast_reload='1'
-set nikki.config.profile='subscription:cfg160caa'
 
 # 代理模式配置
-set nikki.proxy.tcp_transparent_proxy_mode='tproxy'
-set nikki.proxy.udp_transparent_proxy_mode='tproxy'
+set nikki.proxy.tcp_mode='tproxy'
+set nikki.proxy.udp_mode='tproxy'
 set nikki.proxy.ipv6_proxy='1'
 set nikki.proxy.bypass_china_mainland_ip='1'
-set nikki.proxy.access_control_mode='block'
+set nikki.proxy.bypass_china_mainland_ip6='1'
 set nikki.proxy.router_proxy='0'
 set nikki.proxy.ipv4_dns_hijack='0'
 set nikki.proxy.ipv6_dns_hijack='0'
@@ -141,6 +140,7 @@ set nikki.mixin.dns_system_hosts='1'
 set nikki.mixin.geosite_url='https://ghfast.top/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat'
 
 # 认证
+del nikki.cfg06b425
 add nikki authentication
 set nikki.@authentication[-1].enabled='1'
 set nikki.@authentication[-1].username='Clash'
@@ -153,24 +153,6 @@ set nikki.@authentication[-1].password='aK12&345g678'
 # set nikki.@subscription[-1].user_agent='mihomo'
 # set nikki.@subscription[-1].prefer='remote'
 
-# 透明代理白名单（避免影响系统服务）
-del nikki.proxy.bypass_user
-add_list nikki.proxy.bypass_user='ftp'
-add_list nikki.proxy.bypass_user='nobody'
-add_list nikki.proxy.bypass_user='ntp'
-add_list nikki.proxy.bypass_user='dnsmasq'
-add_list nikki.proxy.bypass_user='logd'
-add_list nikki.proxy.bypass_user='ubus'
-add_list nikki.proxy.bypass_user='aria2'
-
-del nikki.proxy.bypass_group
-add_list nikki.proxy.bypass_group='ftp'
-add_list nikki.proxy.bypass_group='nogroup'
-add_list nikki.proxy.bypass_group='ntp'
-add_list nikki.proxy.bypass_group='dnsmasq'
-add_list nikki.proxy.bypass_group='logd'
-add_list nikki.proxy.bypass_group='ubus'
-add_list nikki.proxy.bypass_group='aria2'
 EOF
 
 # 提交更改并重载配置
