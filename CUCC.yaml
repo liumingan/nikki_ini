@@ -223,23 +223,25 @@ proxy-groups:
 rules:
   - GEOIP,lan,直连,no-resolve
   - DOMAIN-KEYWORD,github,PROXY
+  - GEOSITE,microsoft@cn,直连
+  - GEOSITE,apple@cn,直连
+  - DOMAIN-SUFFIX,windows.com,直连
+  - DOMAIN-SUFFIX,microsoft.com,直连
   - DOMAIN-SUFFIX,openai.com,PROXY  # 新增：确保 OpenAI 登录不受干扰
   - DOMAIN-SUFFIX,auth0.com,PROXY   # 新增：确保 OpenAI 认证不受干扰
+  - GEOSITE,google,PROXY
+  - GEOSITE,youtube,PROXY
   - RULE-SET,private_ip,直连,no-resolve
   - RULE-SET,private_domain,直连
   - RULE-SET,cn_ip,直连
-  - GEOSITE,google,PROXY
-  - GEOSITE,youtube,PROXY
-  - GEOSITE,netflix,OTHER
-
   - GEOSITE,CN,直连 
+  - GEOSITE,netflix,OTHER
   - GEOSITE,twitter,PROXY
   - GEOSITE,telegram,Telegram
   - GEOSITE,bilibili,OTHER
   - GEOSITE,bahamut,OTHER
   - GEOSITE,spotify,OTHER
   - GEOSITE,geolocation-!cn,其他
-  
   - GEOIP,google,PROXY
   - GEOIP,netflix,OTHER
   - GEOIP,telegram,Telegram
