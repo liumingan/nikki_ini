@@ -116,7 +116,7 @@ tun:
 dns:
   cache-algorithm: arc
   enable: true
-  enhanced-mode: redir-host
+  enhanced-mode: fake-ip
   prefer-h3: true
   listen: '[::]:1053'
   use-hosts: true
@@ -147,12 +147,11 @@ dns:
       - '218.106.127.114'
       - '218.104.111.114'
     'geosite:geolocation-!cn,google,gfw,github,youtube,pixiv,bing,twitter,openai':
-      - 'tls://1.0.0.1'
-      - '1dot1dot1dot1.cloudflare-dns.com'
+      - 'quic://dns.adguard.com:784'
       - 'https://dns.google/dns-query'
-      - 'tls://208.67.222.222'
+      - 'https://1.1.1.1/dns-query'
       - 'https://cloudflare-dns.com/dns-query'
-      - 'https://mozilla.cloudflare-dns.com/dns-query#DNS&h3=true'
+      - 'https://mozilla.cloudflare-dns.com/dns-query&h3=true'
   proxy-server-nameserver:
     - '223.5.5.5'
     - '114.114.115.115'
