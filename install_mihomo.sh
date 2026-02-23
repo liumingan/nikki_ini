@@ -23,7 +23,7 @@ uci batch <<-EOF
 set nikki.'config'.enabled='1'
 set nikki.'config'.start_delay='0'
 set nikki.'config'.scheduled_restart='0'
-set nikki.'config'.cron_expression='0
+set nikki.'config'.cron_expression='0 4 * * *'
 set nikki.'config'.test_profile='1'
 set nikki.'config'.core_only='1'
 
@@ -50,7 +50,7 @@ set nikki.'mixin'.tproxy_port='7892'
 set nikki.'mixin'.authentication='1'
 set nikki.'mixin'.tun_device='nikki'
 set nikki.'mixin'.tun_stack='system'
-set nikki.'mixin'.tun_dns_hijack='0'
+set nikki.'mixin'.tun_dns_hijack='1'
 add_list nikki.'mixin'.tun_dns_hijacks='tcp://any:53'
 add_list nikki.'mixin'.tun_dns_hijacks='udp://any:53'
 set nikki.'mixin'.dns_listen='[::]:1053'
@@ -85,8 +85,8 @@ set nikki.'proxy'.ipv6_proxy='1'
 set nikki.'proxy'.fake_ip_ping_hijack='1'
 set nikki.'proxy'.router_proxy='1'
 set nikki.'proxy'.lan_proxy='1'
-set nikki.'proxy'.bypass_china_mainland_ip='1'
-set nikki.'proxy'.bypass_china_mainland_ip6='1'
+set nikki.'proxy'.bypass_china_mainland_ip='0'
+set nikki.'proxy'.bypass_china_mainland_ip6='0'
 
 # 认证
 add nikki authentication
