@@ -25,7 +25,7 @@ set nikki.'config'.start_delay='0'
 set nikki.'config'.scheduled_restart='0'
 set nikki.'config'.cron_expression='0
 set nikki.'config'.test_profile='1'
-set nikki.'config'.core_only='0'
+set nikki.'config'.core_only='1'
 
 # 订阅配置
 set nikki.'subscription'.name="${Operators}"
