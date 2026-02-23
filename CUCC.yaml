@@ -229,6 +229,8 @@ proxy-groups:
 
 rules:
   - GEOIP,lan,直连,no-resolve
+  - DOMAIN-SUFFIX,openai.com,PROXY
+  - DOMAIN-SUFFIX,chatgpt.com,PROXY
   - DOMAIN-KEYWORD,github,PROXY
   - GEOSITE,microsoft@cn,直连
   - GEOSITE,apple@cn,直连
