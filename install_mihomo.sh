@@ -21,7 +21,7 @@ ONLINE_INSTALL_HS || DOWNLOAD_Nikki_HS
 # 启用 Nikki，并进行基本配置
 uci batch <<-EOF
 set nikki.'config'.enabled='1'
-set nikki.'config'.start_delay='0'
+set nikki.'config'.start_delay='10'
 set nikki.'config'.scheduled_restart='0'
 set nikki.'config'.cron_expression='0 4 * * *'
 set nikki.'config'.test_profile='1'
