@@ -124,12 +124,10 @@ dns:
   ipv6: true
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter:
-    - 'geosite:tencent'
-    - 'geosite:cn'
-    - 'geosite:apple@cn'
-    - 'geosite:microsoft@cn'
-    - '+.lan'
-    - '+.local'
+    - "*"
+    - "+.lan"
+    - "+.local"
+    - "+.market.xiaomi.com"
   default-nameserver:
     - 114.114.114.114
     - 119.29.29.29
