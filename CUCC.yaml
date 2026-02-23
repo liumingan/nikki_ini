@@ -46,8 +46,8 @@ proxies:
   - {"name": "liaohui", "type": "socks5", "server": "liaohuir5s.lmy.dedyn.io", "port": "7891", "username": "Clash", "password": "aK12&345g678"}
 
 mixed-port: 7890
-socks-port: 1080
-redir-port: 7891
+socks-port: 7891
+redir-port: 7893
 tproxy-port: 7892
 allow-lan: true
 bind-address: "*"
