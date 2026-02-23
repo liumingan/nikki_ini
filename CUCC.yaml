@@ -124,7 +124,14 @@ dns:
   ipv6: true
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter:
-    - '+.*'
+	  - 'geosite:tencent'
+  	- 'geosite:weixin'
+  	- 'geosite:qq'
+	  - 'geosite:cn'
+  	- 'geosite:apple@cn'
+	  - 'geosite:microsoft@cn'
+  	- '+.lan'
+	  - '+.local'
   default-nameserver:
     - 114.114.114.114
     - 119.29.29.29
@@ -135,8 +142,8 @@ dns:
     - '114.114.114.114'
   nameserver-policy:
     'geosite:baidu': '180.76.76.76'
-    'geosite:alibaba': '223.5.5.5'
-    'geosite:tencent': '119.29.29.29'
+    'geosite:alibaba,apple,microsoft': '223.5.5.5'
+    'geosite:tencent,weixin,qq': '119.29.29.29'
     "geosite:category-ads-all": rcode://success
     'geosite:cn,private,category-games@cn':
       - '218.106.127.114'
