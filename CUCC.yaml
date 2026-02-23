@@ -141,7 +141,7 @@ dns:
     'geosite:cn,private,category-games@cn':
       - '218.106.127.114'
       - '218.104.111.114'
-    'geosite:geolocation-!cn,google,gfw,github,youtube,pixiv,bing,twitter,openai,raw.githubusercontent.com':
+    'geosite:geolocation-!cn,google,gfw,github,youtube,pixiv,bing,twitter,openai':
       - 'tls://1.0.0.1'
       - '1dot1dot1dot1.cloudflare-dns.com'
       - 'https://dns.google/dns-query'
