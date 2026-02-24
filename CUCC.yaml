@@ -116,7 +116,7 @@ tun:
 dns:
   cache-algorithm: arc
   enable: true
-  enhanced-mode: fake-ip
+  enhanced-mode: Redir-Host   #fake-ip
   prefer-h3: true
   listen: '[::]:1053'
   use-hosts: true
