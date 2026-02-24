@@ -6,7 +6,7 @@ proxy-providers:
     interval: 86400
     health-check: {enable: true,url: "https://www.gstatic.com/generate_204",interval: 300}
     override:
-      additional-prefix: "[LTCF8443]"
+      additional-prefix: "[YDCF2053]"
 
   YDFD443:
     url: "https://raw.githubusercontent.com/liumingan/nikki_ini/main/Proxy/YDFD-443.yaml"
@@ -14,7 +14,7 @@ proxy-providers:
     interval: 86400
     health-check: {enable: true,url: "https://www.gstatic.com/generate_204",interval: 300}
     override:
-      additional-prefix: "[LTFD443]"
+      additional-prefix: "[YDFD443]"
 
   cf2053:
     url: "https://raw.githubusercontent.com/liumingan/nikki_ini/main/Proxy/cf2053.yaml"
