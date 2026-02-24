@@ -4,8 +4,8 @@
 
 set -e  # 遇到错误立即退出
 uci set luci.main.check_for_newer_firmwares='0'
-uci commit network
-/etc/init.d/network restart
+uci commit luci
+/etc/init.d/rpcd restart
 
 # 下载函数
 DOWNLOAD_Nikki_HS (){
