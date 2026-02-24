@@ -1,15 +1,15 @@
 # url 里填写自己的订阅,名称不能重复
 proxy-providers:
-  LTCF8443:
-    url: "https://raw.githubusercontent.com/liumingan/nikki_ini/main/Proxy/cf-LTCF-8443.yaml"
+  YDCF2053:
+    url: "https://raw.githubusercontent.com/liumingan/nikki_ini/main/Proxy/cf-YDCF-2053.yaml"
     type: http
     interval: 86400
     health-check: {enable: true,url: "https://www.gstatic.com/generate_204",interval: 300}
     override:
       additional-prefix: "[LTCF8443]"
 
-  LTFD443:
-    url: "https://raw.githubusercontent.com/liumingan/nikki_ini/main/Proxy/cf-LTFD-443.yaml"
+  YDFD443:
+    url: "https://raw.githubusercontent.com/liumingan/nikki_ini/main/Proxy/YDFD-443.yaml"
     type: http
     interval: 86400
     health-check: {enable: true,url: "https://www.gstatic.com/generate_204",interval: 300}
@@ -160,9 +160,9 @@ proxy-groups:
   - name: PROXY
     type: select
     proxies:
-      - ⚖️ LTCF8443轮询
+      - ⚖️ YDCF2053轮询
       - ⚖️ cf20轮询
-      - ⚖️ LTFD443轮询
+      - ⚖️ YDFD443轮询
       - ⚖️ chromego轮询
       - 手动选择
   - name: 手动选择
@@ -172,14 +172,13 @@ proxy-groups:
       - ⚖️ cf20轮询
       - ⚖️ chromego轮询
       - myhome
-      - liaohui
-      - ⚖️ LTFD443轮询
-      - ⚖️ LTCF8443轮询
+      - ⚖️ YDFD443轮询
+      - ⚖️ YDCF2053轮询
   - name: OTHER
     type: url-test
     use:
-      - LTCF8443
-      - LTFD443
+      - YDCF2053
+      - YDFD443
       - cf2053
       - cf2096
   - name: Telegram
@@ -200,16 +199,16 @@ proxy-groups:
       - PROXY
       - 手动选择
       - 直连
-  - name: ⚖️ LTFD443轮询
+  - name: ⚖️ YDFD443轮询
     type: load-balance
     strategy: round-robin
     use:
-      - LTFD443
-  - name: ⚖️ LTCF8443轮询
+      - YDFD443
+  - name: ⚖️ YDCF2053轮询
     type: load-balance
     strategy: round-robin
     use:
-      - LTCF8443
+      - YDCF2053
   - name: ⚖️ cf20轮询
     type: load-balance
     strategy: round-robin
