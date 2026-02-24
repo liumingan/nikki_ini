@@ -47,7 +47,7 @@ download_speedtest() {
     while [ $count -lt $retries ]; do
         # 下载并解压测速软件
         wget -qO "/tmp/$cfst_s" "https://raw.githubusercontent.com/liumingan/nikki_ini/main/$cfst_s" \
-            && tar -zxf "/tmp/$cfst_s" -C /etc/ \
+            && tar -zxf "/tmp/$cfst_s" -C /etc/cfipopw/ \
             && rm -f "/tmp/$cfst_s"
 
         # 检查是否成功解压
