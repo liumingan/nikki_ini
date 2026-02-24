@@ -3,7 +3,9 @@
 . /etc/openwrt_release  # 读取 OpenWrt 版本信息
 
 set -e  # 遇到错误立即退出
-
+uci set luci.main.check_for_newer_firmwares='0'
+uci commit network
+/etc/init.d/network restart
 
 # 下载函数
 DOWNLOAD_Nikki_HS (){
