@@ -116,7 +116,7 @@ tun:
 dns:
   cache-algorithm: arc
   enable: true
-  enhanced-mode: Redir-Host  #fake-ip
+  enhanced-mode: fake-ip  #Redir-Host  #
   prefer-h3: true
   listen: '[::]:1053'
   use-hosts: true
@@ -124,10 +124,14 @@ dns:
   ipv6: true
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter:
-    - "*"
-    - "+.lan"
-    - "+.local"
-    - "+.market.xiaomi.com"
+    - '*'  # 全局过滤让所有域名返回真实 IP
+    - '+.*'
+    - 'lan'
+    - 'local'
+    - 'localhost'
+    - '*.lan'
+    - '*.local'
+    - 'miwifi.com'
   default-nameserver:
     - 114.114.114.114
     - 119.29.29.29
@@ -142,14 +146,16 @@ dns:
     'geosite:tencent': '119.29.29.29'
     "geosite:category-ads-all": rcode://success
     'geosite:cn,private,category-games@cn':
-      - '218.106.127.114'
-      - '218.104.111.114'
+#       - '211.137.58.20' #移动
+#       - '211.137.64.163' #移动
+       - '218.106.127.114'
+       - '218.104.111.114'
     'geosite:geolocation-!cn,google,gfw,github,youtube,pixiv,bing,twitter,openai':
-      - 'quic://dns.adguard.com:784'
-      - 'https://dns.google/dns-query'
-      - 'https://1.1.1.1/dns-query'
-      - 'https://cloudflare-dns.com/dns-query'
-      - 'https://mozilla.cloudflare-dns.com/dns-query&h3=true'
+       - 'quic://dns.adguard.com:784'
+       - 'https://dns.google/dns-query'
+       - 'https://1.1.1.1/dns-query'
+       - 'https://cloudflare-dns.com/dns-query'
+       - 'https://mozilla.cloudflare-dns.com/dns-query&h3=true'
   proxy-server-nameserver:
     - '223.5.5.5'
     - '114.114.115.115'
